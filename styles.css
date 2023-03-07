@@ -2,49 +2,45 @@
 @import url('https://fonts.cdnfonts.com/css/mandalore?styles=54564');
 
 html {
-  height: 100%;
+    height: 100%;
 }
 
 body {
-  margin: 0;
-  display: flex;
-  height: 100%;
-  font-family: 'Mandalore' , sans-serif;
-  color:white;
+    margin: 0;
+    display: flex;
+    height: 100%;
+    font-family: 'Mandalore', sans-serif;
+    color: white;
 }
 
 main {
-  background-image: url("./assets/mandobkgd.webp");
-  background-position: center;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: space-around;
-  width: 66%;
-  height: 100%;
+    background-image: url("./assets/mandobkgd.webp");
+    background-position: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-evenly;
+    width: 66%;
+    height: 100%;
 }
 
-h1 {
-  font-size: 50pt;
-  margin: 0;
+h1, h2 {
+    font-size: 40pt;
+    margin: 0;
+}
+
+h2 {
+    font-size: 20pt;
 }
 
 section {
-  width: 17%;
-  height: 100%;
-  background-color: grey;
+    width: 17%;
+    height: 100%;
+    background-color: grey;
 }
 
-img {
-  height: 150px;
-  width: 150px;
-  border-radius: 5px;;
-}
-
-@keyframes zoom {
-  100% {
-    transform: scale(1.2);
-  }
+p {
+    font-size: 15pt;
 }
 .fighter:hover {
   cursor: pointer;
@@ -53,111 +49,166 @@ img {
   animation-fill-mode: forwards;
 }
 
-h2 {
-  font-size: 20pt;
-  margin: 0;
-}
-
-p {
-  font-size: 15pt;
-}
-
-section, .computer-header, .person-header, .main-header {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-}
-
-.computer-header, .person-header {
-  margin-top: 30%;
-}
-
-div {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  background-color: grey;
-  border: 3px solid black;
-  border-radius: 5px;
-}
-
-div, .reset-button {
+section, header {
     display: flex;
     flex-direction: column;
     align-items: center;
-    background-color: grey;
-    border: 3px solid black;
+}
+
+img {
+    height: 150px;
+    width: 150px;
     border-radius: 5px;
 }
 
-.classic-game {
-  width: 25%
-}
-
-.complex-game {
-  width: 40%;
-  margin-bottom: 10%;
-}
-
 strong {
-  font-size: larger;
-  color: black;
+    font-size: larger;
+    color: black;
 }
 
 ul {
-  margin: 0;
-  padding: 0;
-  list-style: none;
-  white-space: nowrap;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  padding-bottom: 7%;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    white-space: nowrap;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-bottom: 7%;
 }
 
-.classic-game-view, .complex-game-view {
-  border: none;
-  background: none;
+figcaption {
+    font-size: 20pt;
+    text-align: center;
 }
 
-.classic-game:hover, .complex-game:hover, .reset-button:hover {
-  background-color: whitesmoke;
-  transition: 1.5s;
-  cursor: pointer;
+div, .reset-button, .full-reset {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+		background-color: grey;
+	  border: 3px solid black;
+    border-radius: 5px;
 }
 
-.images-complex, .images-classic, .play-screen {
-  display: flex;
-  flex-direction: row;
-  border: none;
-  background: none;
-  margin-bottom: 30%;
-  margin-top: 11%;
+@keyframes zoom {
+    100% {transform: scale(1.2);}
+}
+
+@keyframes emphasize {
+    0% { 
+        color:#fbd0a2; font-size: 60pt;
+    }
+    25% {
+        color:#face8d;
+    }
+    50% { 
+        color:#e37120;
+    }
+    75% {
+        color:#a15419
+    }
+    100% { 
+        color:#964637;
+    }
+}
+
+.current-wins {
+    animation-name: emphasize;
+    animation-duration: 1s;
+    color: black;
+}
+
+.fighter:hover, .starkiller-base:hover {
+    cursor: pointer;
+    animation-duration: 1s;
+    animation-name: zoom;
+    animation-fill-mode: forwards;
+}
+
+.computer-header, .person-header {
+    margin-top: 30%;
+}
+
+.classic-game, .complex-game {
+    padding: 0% 3% 0% 3%;
+}
+
+.complex-game {
+    margin-bottom: 10%;
+}
+
+.classic-game:hover, .complex-game:hover, .reset-button:hover, .full-reset:hover {
+    background-color: #e37120;
+    transition: 1.5s;
+    cursor: pointer;
+}
+
+.fighter-images, .play-screen {
+    display: flex;
+    flex-direction: row;
+    border: none;
+    background: none;
+    padding-bottom: 10%;
+}
+
+.play-screen {
+    padding-bottom: 25%;
+}
+
+.figcap {
+    font-size: 30pt;
+    position: relative;
+    top: -40px;
+    padding: 1%;
+}
+
+.starkiller-base-section {
+    width: 800px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background: none;
+    border: none;
 }
 .play-screen {
   padding-bottom: 10%;
 }
 
-.images-classic {
-  margin-bottom: 45%;
-  margin-top: 22%;
+.starkiller-base {
+    width: 200px;
+    height: 75px;
+    padding-left: 10%;
 }
 
-figcaption {
-  font-size: 20pt;
-  text-align: center;
+.starkiller-base-path {
+    width: 800px;
+    height: 75px;
+    flex-direction: column;
+    align-items: center;
+    background: none;
+    border: none;
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-image: url("./assets/starkillerbase.png");
 }
 
-.reset-complex, .reset-classic {
-  border: none;
+.starkillers-figcap {
+    font-size: 18px;
+    color: white;
+    width: 360px;
 }
-.reset-button {
-  font-family:  'Mandalore' , sans-serif;
-  font-size: 20pt;
-  width: 400px;
-  padding: 3%;
+
+.reset-button, .full-reset {
+    font-family: 'Mandalore', sans-serif;
+    font-size: 15pt;
+    background-color: grey;
+    width: 400px;
+    padding: 2%;
+    margin-bottom: 15%;
 }
 
 .hidden {
-  display: none;
+    display: none;
 }

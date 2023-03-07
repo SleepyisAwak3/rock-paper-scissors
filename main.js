@@ -1,128 +1,185 @@
 var currentGame = new Game;
 var imageCodes = ['filler', '<img src="./assets/happy-rocks.png" alt="rock" class="fighter" id="1">', '<img src="./assets/happy-paper.png" alt="paper" class="fighter" id="2">', '<img src="./assets/happy-scissors.png" alt="scissors" class="fighter" id="3">', '<img src="./assets/stormtrooper.jpeg" alt="stormtrooper" class="fighter" id="4">', '<img src="./assets/new-republic.webp" alt="new-republic" class="fighter" id="5">', '<img src="./assets/mandalorian icon.jpeg" alt="mandalorian" class="fighter" id="6">', '<img src="./assets/sith.webp" alt="sith" class="fighter" id="7">', '<img src="./assets/jedi.jpeg" alt="jedi" class="fighter" id="8">']
 
-var gameHeader = document.querySelector("#gameHeader");
-var classicGameOption = document.querySelector("#classic");
-var complexGameOption = document.querySelector("#complex");
-var classicGamePlay = document.querySelector(".classic-game-view");
-var complexGamePlay = document.querySelector(".complex-game-view");
-var fighters = document.querySelectorAll(".fighter");
-var imagesComplex = document.querySelector(".images-complex");
-var imagesClassic = document.querySelector(".images-classic")
-var classicResults = document.querySelector("#classicPlay")
-var complexResults = document.querySelector("#complexPlay")
-var compWins = document.querySelector("#compWins");
-var humanWins = document.querySelector("#humanWins");
-var gamePlay = document.querySelectorAll("#imageBlock");
-var resetButton = document.querySelector("#resetBtn");
 
-classicGameOption.addEventListener("click", selectClassic);
-complexGameOption.addEventListener("click", selectComplex);
+var gameHeader = document.getElementById('gameHeader');
+var classicGameOption = document.getElementById('classic');
+var complexGameOption = document.getElementById('complex');
+var fighterDisplay = document.getElementById('imageBlock')
+var results = document.getElementById('play');
+var compWins = document.getElementById('compWins');
+var humanWins = document.getElementById('humanWins');
+var gamePlay = document.querySelectorAll('#imageBlock');
+var resetButton = document.getElementById('resetBtn');
+var starkillerBase = document.getElementById('starkillerBase');
+var starkillerCaption = document.getElementById('starkillerCaption');
+var totalResetButton = document.getElementById('fullReset');
+
+
+// 
+classicGameOption.addEventListener('click', selectClassic);
+complexGameOption.addEventListener('click', selectComplex);
 for(var i = 0; i < gamePlay.length; i++) {
-    gamePlay[i].addEventListener("click", selectFighter)
-    gamePlay[i].addEventListener("click", function() {setTimeout(prepNextRound, 1500)})
+    gamePlay[i].addEventListener('click', selectFighter);
+    gamePlay[i].addEventListener('click', function() {setTimeout(prepNextRound, 2000)});
 }
-resetButton.addEventListener("click", showOptions)
+resetButton.addEventListener('click', showOptions);
+totalResetButton.addEventListener('click', resetFullGame);
 
+
+// Functions ------------>>
 function hide(element) {
-    element.classList.add("hidden");
+    element.classList.add('hidden');
 }
 
 function show(element) {
-    element.classList.remove("hidden");
+    element.classList.remove('hidden');
 }
 
 function selectClassic() {
-    currentGame.selectGameSetup("classic");
-    showClassicGame();
+    currentGame.selectGameSetup('classic');
+    displayGame();
 }
 
 function selectComplex() {
-    currentGame.selectGameSetup("complex");
-    showComplexGame();
+    currentGame.selectGameSetup('complex');
+    displayGame();
+}
+
+function displayGame() {
+    encouragePlayer();
+    gameHeader.innerText = 'Choose Your Fighter!';
+    results.innerHTML = '';
+    fighterDisplay.innerHTML = '';
+    for(var i = 0; i < currentGame.fighters.length; i++) {
+        fighterDisplay.innerHTML += `${imageCodes[currentGame.fighters[i]]}`;
+    }
+    hide(results);
+    show(fighterDisplay);
+    show(resetButton);
+    hide(classicGameOption);
+    hide(complexGameOption);
+    hide(totalResetButton);
 }
 
 function selectFighter(event) {
-    currentGame.human.takeTurn(event.target.id)
-    currentGame.computer.takeTurn()
-    currentGame.selectComputerFighter()
-    showBattleMode()
+    currentGame.human.takeTurn(event.target.id);
+    currentGame.computer.takeTurn();
+    currentGame.selectComputerFighter();
+    showBattleMode();
 }
 
 function showBattleMode() {
-    if(currentGame.currentWin === "Person" || currentGame.currentWin === "Computer") {
-        gameHeader.innerText = `${currentGame.currentWin} has won!`
+    hide(resetButton);
+    if(currentGame.currentWin === 'Person' || currentGame.currentWin === 'Computer') {
+        gameHeader.innerText = `${currentGame.currentWin} has won!`;
     } else {
-        gameHeader.innerText ='It\'s a draw!'
+        gameHeader.innerText ='It\'s a draw!';
     }
-    if(currentGame.selectedGame === "classic") {
-        hide(imagesClassic)
-        show(classicResults)
-        addTokens(classicResults)
-    } else {
-        hide(imagesComplex)
-        show(complexResults)
-        addTokens(complexResults)
-    }
+    hide(fighterDisplay);
+    show(results);
+    addTokens(results);
 }
 
 function addTokens(results) {
-    var compFighter = imageCodes[currentGame.computer.chosenFighter]
-    var humanFighter = imageCodes[currentGame.human.chosenFighter]
-    results.innerHTML = `<figure>${humanFighter}<figcaption id="humanFig" class="hidden">${currentGame.human.token}</figcaption></figure><figure>${compFighter}<figcaption id="compFig" class="hidden">${currentGame.computer.token}</figcaption></figure>`
-    var humanFig = document.querySelector("#humanFig")
-    var compFig = document.querySelector("#compFig")
-    showWinToken()
+    var compFighter = imageCodes[currentGame.computer.chosenFighter];
+    var humanFighter = imageCodes[currentGame.human.chosenFighter];
+    results.innerHTML = `<figure>${humanFighter}<figcaption id="humanFig" class="figcap hidden">${currentGame.human.token}</figcaption></figure><figure>${compFighter}<figcaption id="compFig" class="figcap hidden">${currentGame.computer.token}</figcaption></figure>`;
+    showWinToken();
 }
 
 function showWinToken() {
-    var humanFig = document.querySelector("#humanFig")
-    var compFig = document.querySelector("#compFig")
-    if(currentGame.currentWin === "Person") {
-        humanFig.classList.remove("hidden")
-    } else if(currentGame.currentWin === "Computer") {
-        compFig.classList.remove("hidden")
+    var humanFig = document.getElementById('humanFig');
+    var compFig = document.getElementById('compFig');
+    if(currentGame.currentWin === 'Person'){
+        currentGame.moveBase();
+        positionBase();
+        show(humanFig);
+        showWinCount();
+    } else if(currentGame.currentWin === 'Computer'){
+        currentGame.moveBase();
+        positionBase();
+        show(compFig);
+        showWinCount();
     }
+}
+
+function positionBase() {
+    if(currentGame.cometPosition <= 240 && currentGame.cometPosition >= -240) {
+        starkillerBase.style['object-position'] = `${currentGame.cometPosition}px`;
+    }
+    encouragePlayer();
+}
+
+function encouragePlayer() {
+    if(currentGame.gamesLeft > 0 && currentGame.gamesLeft < 6 && currentGame.currentWin) {
+        starkillerCaption.innerText = `You can do it! ${currentGame.gamesLeft} more to go!`;
+    } else if(currentGame.gamesLeft > 0 && currentGame.gamesLeft < 6 && !currentGame.currentWin) {
+        starkillerCaption.innerText = 'Win 3 games to save the Galaxy!';
+    } else if(currentGame.gamesLeft === 6) {
+        starkillerCaption.innerText = 'Oh no...';
+    } else if(currentGame.gamesLeft === 0) {
+        starkillerCaption.innerText = 'Hooray!';
+    }
+}
+
+function showWinCount() {
+    if(currentGame.currentWin === 'Computer') {
+    hide(compWins);
+    void compWins.offsetWidth;
+    show(compWins);
+    compWins.innerText = `Wins: ${currentGame.computer.wins}`;
+    } else {
+    hide(humanWins);
+    void humanWins.offsetWidth;
+    show(humanWins);
+    humanWins.innerText = `Wins: ${currentGame.human.wins}`;
+    } 
 }
 
 function prepNextRound() {
-    if(currentGame.selectedGame === "classic") {
-        showClassicGame()
-    } else {
-        showComplexGame()
+    if(currentGame.basePosition === 240 || currentGame.basePosition === -240) {
+        displayGalaxysFate();
+        return;
     }
-    compWins.innerText = `Wins: ${currentGame.computer.wins}`
-    humanWins.innerText = `Wins: ${currentGame.human.wins}`
+    show(resetButton);
+    displayGame();
 }
 
-function showClassicGame() {
-    gameHeader.innerText = 'Choose Your Fighter!'
-    classicResults.innerHTML = ''
-    hide(classicResults)
-    show(imagesClassic)
-    show(resetButton);
-    hide(classicGameOption);
-    hide(complexGameOption);
-    show(classicGamePlay);
-}
-
-function showComplexGame() {
-    gameHeader.innerText = 'Choose Your Fighter!'
-    complexResults.innerHTML = ''
-    hide(complexResults)
-    show(imagesComplex)
-    show(resetButton);
-    hide(classicGameOption);
-    hide(complexGameOption);
-    show(complexGamePlay);
+function displayGalaxysFate() {
+    hide(results);
+    hide(fighterDisplay);
+    hide(resetButton);
+    show(totalResetButton);
+    starkillerCaption.innerText = '';
+    if(currentGame.cometPosition === 240) {
+        gameHeader.innerText = 'You saved the Galazy!!';
+    } else if(currentGame.cometPosition === -240) {
+        gameHeader.innerText = 'You failed the Galaxy...';
+    }
 }
 
 function showOptions() {
-    gameHeader.innerText = 'Choose Your Game!'
-    gameHeader.id = "game-choice"
+    gameHeader.innerText = 'Choose Your Game!';
     show(classicGameOption);
     show(complexGameOption);
-    hide(classicGamePlay);
-    hide(complexGamePlay);
+    hide(fighterDisplay);
     hide(resetButton);
+    hide(totalResetButton);
+}
+
+function resetFullGame() {
+    currentGame = new Game;
+    gameHeader.innerText = 'Choose Your Game!';
+    starkillerBase.style['object-position'] = '0px';
+    starkillerCaption.innerText = 'Uh oh! Starkiller Base is moving!  Win games to save the Galaxy!';
+    humanWins.innerText = 'Wins: 0';
+    compWins.innerText = 'Wins: 0';
+    show(classicGameOption);
+    show(complexGameOption);
+    hide(fighterDisplay);
+    hide(resetButton);
+    hide(totalResetButton);
+    results.innerHTML = '';
+    fighterDisplay.innerHTML = '';
 }

@@ -2,8 +2,6 @@
 <html lang="en">
     <head>
         <meta charset="UTF-8">
-        <script type="text/javascript" src="./game.js"></script>
-        <script type="text/javascript" src="./player.js"></script>
         <link rel="stylesheet" href="./styles.css">
         <link href="https://fonts.cdnfonts.com/css/the-mandalorian" rel="stylesheet">
         <title>Rock, Paper, Scissors</title>
@@ -19,11 +17,13 @@
         <main>
             <header class="main-header">
                 <h1>Rock, Paper, Scissors</h1>
-                <h2 id="game-choice">Choose Your Game!</h2>
-                <h2 id="fighter-choice" class="hidden">Chose Your Fighter!</h2>
-                <h2 id="draw" class="hidden">It's a draw!</h2>
-                <h2 id="human-win" class="hidden">You win!</h2>
-                <h2 id="comp-win" class="hidden">Computer wins!</h2>
+                <h2 id="gameHeader">Choose Your Game!</h2>
+                <div class="starkiller-base-section">
+                    <div class="starkiller-base-path">
+                        <img src="./assets/starkillerbase.png" alt="Starkiller Base" id="starkillerBase" class="starkiller-base">
+                    </div>
+                    <figcaption class="starkillers-figcap" id="starkiller-caption">Uh oh! Starkiller Base is moving!  Win games to save the Galaxy!</figcaption>
+                </div>
             </header>
             <main>
                 <header class="main-header">
@@ -40,7 +40,7 @@
                 </div>
             <div class="complex-game" id="complex">
                 <h3>Complex Game</h3>
-                <ul>
+								<ul>
                     <li><strong>Stormtrooper</strong> wins against <strong>mandalorian, Sith</strong></li>
                     <li><strong>New Republic</strong> wins against <strong>mandalorian, Stormtrooper</strong></li>
                     <li><strong>Sith</strong> wins against <strong>Jedi, New Republic</strong></li>
@@ -48,35 +48,20 @@
                     <li><strong>mandalorian</strong> wins against <strong>Sith, Jedi</strong></li>
                 </ul>
             </div>
-            <div class="classic-game-view hidden" id="gameView">
-                <div class="play-screen hidden" id="classicPlay"></div>
-                <div class="images-classic" id="imageBlock">
-                    <img src="./assets/happy-rocks.png" alt="rock" class="fighter" id="1">
-                    <img src="./assets/happy-paper.png" alt="paper" class="fighter" id="2">
-                    <img src="./assets/happy-scissors.png" alt="scissors" class="fighter" id="3">
-                </div>
-            </div>
-        <div class="complex-game-view hidden" id="gameView">
-            <div class="play-screen hidden" id="complexPlay"></div>
-            <div class="images-complex" id="imageBlock">
-                <img src="./assets/stormtrooper.jpeg" alt="stormtrooper" class="fighter" id="4">
-                <img src="./assets/new-republic.webp" alt="new-republic" class="fighter" id="5">
-                <img src="./assets/mandalorian icon.jpeg" alt="mandalorian" class="fighter" id="6">
-                <img src="./assets/sith.webp" alt="sith" class="fighter" id="7">
-                <img src="./assets/jedi.jpeg" alt="jedi" class="fighter" id="8">
-                </div>
-            </div>
-            <div class="reset-complex">
-                <button class="reset-button hidden" id="resetBtn">Choose Different Game</button>
-            </div> 
+            <figure class="fighter-images hidden" id="imageBlock">
+            </figure>
+            <figure class="play-screen hidden" id="play"></figure>
+            <button class="reset-button hidden" id="resetBtn">Choose Different Game</button>
+            <button class="full-reset hidden" id="fullReset">Play again!</button>
         </main>
         <section class="computer-section">
             <header class="computer-header">
-                <img src="./assets/superstar-destroyer.jpeg" id="computer" alt="The Empire">
+                <img src="./assets/superstar-destroyer.jpeg" id="computer" alt="superstar-destroyer">
                 <figcaption class="computer"> Computer </label>
             </header>
             <p class="current-wins" id="compWins">Wins: 0</p>
         </section>
+        <script type="text/javascript" src="./image-codes.js"></script>
         <script type="text/javascript" src="./game.js"></script>
         <script type="text/javascript" src="./player.js"></script>
         <script type="text/javascript" src="./main.js"></script>
