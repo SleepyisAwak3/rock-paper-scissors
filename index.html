@@ -6,9 +6,6 @@
         <script type="text/javascript" src="./player.js"></script>
         <link rel="stylesheet" href="./styles.css">
         <link href="https://fonts.cdnfonts.com/css/the-mandalorian" rel="stylesheet">
-        <style>
-            @import url('https://fonts.cdnfonts.com/css/the-mandalorian');
-            </style>
         <title>Rock, Paper, Scissors</title>
     </head>
     <body>
@@ -51,7 +48,12 @@
                 <img src="./assets/happy-paper.png" alt="paper" class="fighter" id="2">
                 <img src="./assets/happy-scissors.png" alt="scissors" class="fighter" id="3">
             </div>
-            <div class="complex-game-view hidden" id="complexView">
+            <div class="reset-classic">
+                <button class="reset-button" id="resetBtn">Choose Different Game</button>
+            </div>
+        </div>
+        <div class="complex-game-view hidden" id="gameView">
+            <div class="images-complex">
                 <img src="./assets/stormtrooper.jpeg" alt="stormtrooper" class="fighter" id="4">
                 <img src="./assets/new-republic.webp" alt="new-republic" class="fighter" id="5">
                 <img src="./assets/mandalorian icon.jpeg" alt="mandalorian" class="fighter" id="6">
@@ -68,6 +70,8 @@
             </header>
             <p class="current-wins">Wins: 0</p>
         </section>
+        <script type="text/javascript" src="./game.js"></script>
+        <script type="text/javascript" src="./player.js"></script>
         <script type="text/javascript" src="./main.js"></script>
     </body>
 </html>

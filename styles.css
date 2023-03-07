@@ -41,6 +41,12 @@ img {
   border-radius: 5px;;
 }
 
+@keyframes zoom {
+  100% {
+    transform: scale(1.2);
+  }
+}
+
 h2, label {
   font-size: 25pt;
   margin: 0;
@@ -69,9 +75,13 @@ div {
   border-radius: 5px;
 }
 
-div:hover::not(.complex-game-view, .classic-game-view) {
-  background-color: white;
-  transition: 1.5s;
+div, .reset-button {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: grey;
+    border: 3px solid black;
+    border-radius: 5px;
 }
 
 .classic-game {
@@ -98,13 +108,41 @@ ul {
   align-items: center;
   padding-bottom: 7%;
 }
+
 .classic-game-view, .complex-game-view, .results-view {
+  border: none;
+  background: none;
+}
+
+.classic-game:hover, .complex-game:hover, .reset-button:hover {
+  background-color: whitesmoke;
+  transition: 1.5s;
+  cursor: pointer;
+}
+
+.images-complex, .images-classic{
   display: flex;
   flex-direction: row;
   border: none;
   background: none;
   margin-bottom: 30%;
   margin-top: 11%;
+}
+
+.images-classic {
+  margin-bottom: 45%;
+  margin-top: 22%;
+}
+
+.reset-complex, .reset-classic {
+  border: none;
+}
+
+.reset-button {
+  font-family:  'Mandalore' , sans-serif;
+  font-size: 20pt;
+  width: 400px;
+  padding: 3%;
 }
 
 .hidden {
