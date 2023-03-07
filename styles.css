@@ -1,0 +1,150 @@
+
+@import url('https://fonts.cdnfonts.com/css/mandalore?styles=54564');
+
+html {
+  height: 100%;
+}
+
+body {
+  margin: 0;
+  display: flex;
+  height: 100%;
+  font-family: 'Mandalore' , sans-serif;
+  color:white;
+}
+
+main {
+  background-image: url("./assets/mandobkgd.webp");
+  background-position: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-around;
+  width: 70%;
+  height: 100%;
+}
+
+h1 {
+  font-size: 50pt;
+  margin: 0;
+}
+
+section {
+  width: 15%;
+  height: 100%;
+  background-color: grey;
+}
+
+img {
+  height: 150px;
+  width: 150px;
+  border-radius: 5px;;
+}
+
+@keyframes zoom {
+  100% {
+    transform: scale(1.2);
+  }
+}
+
+h2, label {
+  font-size: 25pt;
+  margin: 0;
+}
+
+p {
+  font-size: 15pt;
+}
+
+section, .computer-header, .person-header, .main-header {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.computer-header, .person-header {
+  margin-top: 30%;
+}
+
+div {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: grey;
+  border: 3px solid black;
+  border-radius: 5px;
+}
+
+div, .reset-button {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: grey;
+    border: 3px solid black;
+    border-radius: 5px;
+}
+
+.classic-game {
+  width: 25%
+}
+
+.complex-game {
+  width: 40%;
+  margin-bottom: 10%;
+}
+
+strong {
+  font-size: larger;
+  color: black;
+}
+
+ul {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  white-space: nowrap;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-bottom: 7%;
+}
+
+.classic-game-view, .complex-game-view, .results-view {
+  border: none;
+  background: none;
+}
+
+.classic-game:hover, .complex-game:hover, .reset-button:hover {
+  background-color: whitesmoke;
+  transition: 1.5s;
+  cursor: pointer;
+}
+
+.images-complex, .images-classic{
+  display: flex;
+  flex-direction: row;
+  border: none;
+  background: none;
+  margin-bottom: 30%;
+  margin-top: 11%;
+}
+
+.images-classic {
+  margin-bottom: 45%;
+  margin-top: 22%;
+}
+
+.reset-complex, .reset-classic {
+  border: none;
+}
+
+.reset-button {
+  font-family:  'Mandalore' , sans-serif;
+  font-size: 20pt;
+  width: 400px;
+  padding: 3%;
+}
+
+.hidden {
+  display: none;
+}
