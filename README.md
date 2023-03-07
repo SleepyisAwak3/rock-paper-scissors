@@ -1,4 +1,4 @@
-# rock-paper-scissors
+
 ### Rock Paper Scissors
 This project is a rock, paper, scissors game that I built using my Javascript, CSS, and HTML learning.  It makes use of class to class interaction to allow the user to play two versions of the game of rock, paper, scissors against the computer.
 
