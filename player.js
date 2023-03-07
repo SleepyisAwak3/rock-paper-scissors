@@ -1,16 +1,19 @@
 class Player {
   constructor() {
      this.name;
-     this.token; // icon by the name
+     this.token;
      this.wins = 0;
      this.chosenFighter; 
   }
-  takeTurn(event) {
+  takeTurn(chosenImg) {
       if((currentGame.selectedGame === "classic" || currentGame.selectedGame === "complex") && this.name === "The Mandalorian") {
-          this.chosenFighter = parseInt(event.target.id);
+          this.token = "🛡️"
+          this.chosenFighter = parseInt(chosenImg);
       } else if(currentGame.selectedGame === "classic" && this.name === "The Empire") {
+          this.token = "🚀"
           this.getRandomFighter();
       } else if(currentGame.selectedGame === "complex" && this.name === "The Empire") {
+          this.token = "🚀"
           this.getRandomFighter();
       }
   }

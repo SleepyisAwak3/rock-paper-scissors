@@ -12,9 +12,9 @@
         <section class="person-section">
             <header class="person-header">
                 <img src="./assets/mandalorian icon.jpeg" id="person" alt="My Mando">
-                <label for="person">Person</label>
+                <figcaption class="person"> Person </label>
             </header>
-            <p class="current-wins">Wins: 0</p>
+            <p class="current-wins" id="humanWins">Wins: 0</p>
         </section>
         <main>
             <header class="main-header">
@@ -25,14 +25,19 @@
                 <h2 id="human-win" class="hidden">You win!</h2>
                 <h2 id="comp-win" class="hidden">Computer wins!</h2>
             </header>
-            <div class="classic-game" id="classic">
-                <h3>Classic Game</h3>
-                <ul>
-                    <li><strong>Rock</strong> beats <strong>Scissors</strong></li>
-                    <li><strong>Paper</strong> beats <strong>Rock</strong></li>
-                    <li><strong>Scissors</strong> beats <strong>Paper</strong></li>
-                </ul>
-            </div>
+            <main>
+                <header class="main-header">
+                    <h1>Rock, Paper, Scissors</h1>
+                    <h2 id="gameHeader">Choose Your Game!</h2>
+                </header>
+                <div class="classic-game" id="classic">
+                    <h3>Classic Game</h3>
+                    <ul>
+                        <li><strong>Rock</strong> beats <strong>Scissors</strong></li>
+                        <li><strong>Paper</strong> beats <strong>Rock</strong></li>
+                        <li><strong>Scissors</strong> beats <strong>Paper</strong></li>
+                    </ul>
+                </div>
             <div class="complex-game" id="complex">
                 <h3>Complex Game</h3>
                 <ul>
@@ -43,35 +48,37 @@
                     <li><strong>mandalorian</strong> wins against <strong>Sith, Jedi</strong></li>
                 </ul>
             </div>
-            <div class="classic-game-view hidden" id="classicView">
-                <img src="./assets/happy-rocks.png" alt="rock" class="fighter" id="1">
-                <img src="./assets/happy-paper.png" alt="paper" class="fighter" id="2">
-                <img src="./assets/happy-scissors.png" alt="scissors" class="fighter" id="3">
+            <div class="classic-game-view hidden" id="gameView">
+                <div class="play-screen hidden" id="classicPlay"></div>
+                <div class="images-classic" id="imageBlock">
+                    <img src="./assets/happy-rocks.png" alt="rock" class="fighter" id="1">
+                    <img src="./assets/happy-paper.png" alt="paper" class="fighter" id="2">
+                    <img src="./assets/happy-scissors.png" alt="scissors" class="fighter" id="3">
+                </div>
             </div>
-            <div class="reset-classic">
-                <button class="reset-button" id="resetBtn">Choose Different Game</button>
-            </div>
-        </div>
         <div class="complex-game-view hidden" id="gameView">
-            <div class="images-complex">
+            <div class="play-screen hidden" id="complexPlay"></div>
+            <div class="images-complex" id="imageBlock">
                 <img src="./assets/stormtrooper.jpeg" alt="stormtrooper" class="fighter" id="4">
                 <img src="./assets/new-republic.webp" alt="new-republic" class="fighter" id="5">
                 <img src="./assets/mandalorian icon.jpeg" alt="mandalorian" class="fighter" id="6">
                 <img src="./assets/sith.webp" alt="sith" class="fighter" id="7">
                 <img src="./assets/jedi.jpeg" alt="jedi" class="fighter" id="8">
+                </div>
             </div>
-            <div class="results-view hidden" id="results">
-            </div>
+            <div class="reset-complex">
+                <button class="reset-button hidden" id="resetBtn">Choose Different Game</button>
+            </div> 
         </main>
         <section class="computer-section">
             <header class="computer-header">
-                <img src="./assets/superstar-destroyer.jpeg" id="computer" alt="superstar-destroyer">
-                <label for="computer">Computer</label>
+                <img src="./assets/superstar-destroyer.jpeg" id="computer" alt="The Empire">
+                <figcaption class="computer"> Computer </label>
             </header>
-            <p class="current-wins">Wins: 0</p>
+            <p class="current-wins" id="compWins">Wins: 0</p>
         </section>
         <script type="text/javascript" src="./game.js"></script>
         <script type="text/javascript" src="./player.js"></script>
         <script type="text/javascript" src="./main.js"></script>
     </body>
-</html>
+    </html>
