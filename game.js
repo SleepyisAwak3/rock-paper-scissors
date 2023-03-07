@@ -9,6 +9,8 @@ class Game {
       this.gamesLeft;
   }
   selectGameSetup(type){
+      this.human.name = "The Mandalorian"
+      this.computer.name = "The Empire"
       this.selectedGame = type;
       if(this.selectedGame === 'classic') {
           this.fighters = [0, 1, 2];
@@ -54,6 +56,7 @@ class Game {
   compareFightersComplex() {
       var human = this.human.chosenFighter;
       var comp = this.computer.chosenFighter;
+      
       if(human === 3 && (comp === 4 || comp === 7)) {
           this.computer.wins++;
           this.currentWin = 'Computer';
@@ -103,5 +106,6 @@ class Game {
           this.basePosition -= 80;
       }
       this.gamesLeft = 3 - (this.human.wins - this.computer.wins);
+
   }
 }

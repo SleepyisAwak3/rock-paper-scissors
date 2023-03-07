@@ -1,5 +1,6 @@
-
 var currentGame = new Game;
+var imageCodes = ['filler', '<img src="./assets/happy-rocks.png" alt="rock" class="fighter" id="1">', '<img src="./assets/happy-paper.png" alt="paper" class="fighter" id="2">', '<img src="./assets/happy-scissors.png" alt="scissors" class="fighter" id="3">', '<img src="./assets/stormtrooper.jpeg" alt="stormtrooper" class="fighter" id="4">', '<img src="./assets/new-republic.webp" alt="new-republic" class="fighter" id="5">', '<img src="./assets/mandalorian icon.jpeg" alt="mandalorian" class="fighter" id="6">', '<img src="./assets/sith.webp" alt="sith" class="fighter" id="7">', '<img src="./assets/jedi.jpeg" alt="jedi" class="fighter" id="8">']
+
 
 var gameHeader = document.getElementById('gameHeader');
 var classicGameOption = document.getElementById('classic');
